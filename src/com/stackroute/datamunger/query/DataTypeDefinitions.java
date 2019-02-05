@@ -16,25 +16,15 @@ public class DataTypeDefinitions {
 
 	public static Object getDataType(String input) {
 
-		// check for empty object
-
-		// checking for Integer
-
-		// checking for floating point numbers
-
-		// checking for date format dd/mm/yyyy
-
-		// checking for date format mm/dd/yyyy
-
-		// checking for date format dd-mon-yy
-
-		// checking for date format dd-mon-yyyy
-
-		// checking for date format dd-month-yy
-
-		// checking for date format dd-month-yyyy
-
-		return null;
+		if (input.matches("[0-9]+")) {
+			return java.lang.Integer.class.getName();			
+		} else if (input.trim().length() == 0) {
+			return java.lang.Object.class.getName();			
+		} else if (input.matches( "[0-3][0-9]/[0-1][0-9]/[0-9]{4}|[0-1][0-9]/[0-3][0-9]/[0-9]{4}|[0-3][0-9]-[a-z]{3}-[0-9]{2}|[0-3][0-9]-[a-z]{3}-[0-9]{4}|[0-3][0-9]-[a-z]*-[0-9]{2}|[0-3][0-9]-[a-z]*-[0-9]{4}|[0-9]{4}/[0-1][0-9]/[0-3][0-9]|[0-9]{4}-[0-1][0-9]-[0-3][0-9]")) {
+			return java.util.Date.class.getName();			
+		} else {
+			return java.lang.String.class.getName();
+		}
 	}
 
 }
